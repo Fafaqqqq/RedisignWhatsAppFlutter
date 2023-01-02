@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
 import 'package:whats_app/ui/screens/main/chats.dart';
+import 'package:whats_app/ui/screens/qr.dart';
 import 'package:whats_app/ui/screens/settings.dart';
 
 void main() {
@@ -80,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Calls(),
           Chats(),
           //Status(),
-          Settings()
+          QR()
         ],
       ),
     );
