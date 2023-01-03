@@ -5,6 +5,7 @@ import 'package:whats_app/ui/screens/facetime.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
 import 'package:whats_app/ui/screens/main/chats.dart';
 import 'package:whats_app/ui/screens/main/status.dart';
+import 'package:whats_app/ui/screens/messag.dart';
 import 'package:whats_app/ui/screens/qr.dart';
 import 'package:whats_app/ui/screens/settings.dart';
 
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           _body(_selectedIndex),
         ],
-      ),*/ Contacts(),
+      ),*/ Message(),
 /*
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
