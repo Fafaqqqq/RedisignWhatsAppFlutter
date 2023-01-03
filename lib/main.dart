@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:whats_app/ui/screens/contacts.dart';
 import 'package:whats_app/ui/screens/facetime.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
 import 'package:whats_app/ui/screens/main/chats.dart';
@@ -48,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           _body(_selectedIndex),
         ],
-      ),*/ Facetime(),
+      ),*/ Contacts(),
 /*
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
