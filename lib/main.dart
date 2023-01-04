@@ -6,9 +6,6 @@ import 'package:whats_app/ui/screens/facetime.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
 import 'package:whats_app/ui/screens/main/chats.dart';
 import 'package:whats_app/ui/screens/main/status.dart';
-import 'package:whats_app/ui/screens/messag.dart';
-import 'package:whats_app/ui/screens/qr.dart';
-import 'package:whats_app/ui/screens/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,18 +63,27 @@ class _MyHomePageState extends State<MyHomePage> {
               IconButton(
                 onPressed: (){
                   _onItemTapped(0);
+                  setState(() {
+                    title = "Chats";
+                  });
                 },
                 icon: SvgPicture.asset('assets/icons/menuMessage.svg'),
               ),
               IconButton(
                 onPressed: (){
                   _onItemTapped(1);
+                  setState(() {
+                    title = "Cals";
+                  });
                 },
                 icon: SvgPicture.asset('assets/icons/manuCall.svg'),
               ),
               IconButton(
                 onPressed: (){
                   _onItemTapped(2);
+                  setState(() {
+                    title = "Status";
+                  });
                 },
                 icon: SvgPicture.asset('assets/icons/menuContacts.svg'),
               ),
