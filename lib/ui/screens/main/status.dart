@@ -10,8 +10,6 @@ class Status extends StatefulWidget {
 class _HomeState extends State<Status> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-    );
+    return Image.asset("assets/icons/1122.png");
   }
 }
