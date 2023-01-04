@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:whats_app/ui/screens/contacts.dart';
 import 'package:whats_app/ui/screens/facetime.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
@@ -35,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  String title = "Chats";
 
   void _onItemTapped(int index) {
     setState(() {
@@ -45,33 +47,43 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-    return const Scaffold(
-      body: /*Column(
+    return Scaffold(
+      body: Column(
         children: [
+          _appbar(),
           _body(_selectedIndex),
         ],
-      ),*/ Message(),
-/*
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xff00B1B3),
-        onTap: _onItemTapped,
       ),
-*/
+      bottomNavigationBar: Container(
+          height: 67,
+          decoration: const BoxDecoration(
+              color: Color(0xFFEEF1F4),
+              borderRadius: BorderRadius.all(Radius.circular(50))
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: (){
+                  _onItemTapped(0);
+                },
+                icon: SvgPicture.asset('assets/icons/menuMessage.svg'),
+              ),
+              IconButton(
+                onPressed: (){
+                  _onItemTapped(1);
+                },
+                icon: SvgPicture.asset('assets/icons/manuCall.svg'),
+              ),
+              IconButton(
+                onPressed: (){
+                  _onItemTapped(2);
+                },
+                icon: SvgPicture.asset('assets/icons/menuContacts.svg'),
+              ),
+            ],
+          )
+      )
     );
   }
 
@@ -84,10 +96,73 @@ class _MyHomePageState extends State<MyHomePage> {
         index: selectedIndexForMenu,
         alignment: AlignmentDirectional.center,
         children: const [
-          Calls(),
           Chats(),
+          Calls(),
           Status(),
         ],
+      ),
+    );
+  }
+
+
+  Widget _appbar(){
+    return Container(
+      height: 100,
+      width: 390,
+      alignment: Alignment.center,
+      child: SizedBox(
+        width: 350,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset('assets/icons/WhatsApp.svg'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: SvgPicture.asset('assets/icons/fi-br-camera.svg'),
+                    ),
+                    IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: SvgPicture.asset('assets/icons/fi-br-user-add.svg'),
+                    ),
+                    IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: SvgPicture.asset('assets/icons/fi-br-search.svg'),
+                    ),
+                    IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/icons/fi-br-menu-dots-vertical.svg',
+                        color: const Color(0xFF374957),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 22,),
+            Text(
+              title,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 18
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
