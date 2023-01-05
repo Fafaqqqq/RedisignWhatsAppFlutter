@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:whats_app/main.dart';
+import 'package:whats_app/ui/screens/qr.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -35,35 +37,82 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 30),
-        top(),
-        const SizedBox(height: 12),
-        Container(
-          color: const Color(0xffD9D9D9),
-          height: 2,
-        ),
-        const SizedBox(height: 42),
-        body(),
-        const SizedBox(height: 128),
-        bottom()
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          topBack(),
+          const SizedBox(height: 30),
+          top(),
+          const SizedBox(height: 12),
+          Container(
+            color: const Color(0xffD9D9D9),
+            height: 2,
+          ),
+          const SizedBox(height: 42),
+          body(),
+          const SizedBox(height: 100),
+          bottom()
+        ],
+      ),
+    );
+  }
+
+  Widget topBack(){
+    return SizedBox(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(width: 28),
+          IconButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyHomePage()),);
+            },
+            icon: SvgPicture.asset("assets/icons/fi-br-arrow-left.svg", color: const Color(0xff212121),),
+          ),
+          const SizedBox(width: 16),
+          const Text(
+            "Settings",
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Color(0xff212121),
+                fontSize: 18
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget top(){
-    return element(
-        'assets/icons/QWE.svg',
-        'Thad Eddings',
-        'Hello! I used WhatsApp.',
-        visIcon: true
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        element(
+            'assets/icons/QWE.svg',
+            'Thad Eddings',
+            'Hello! I used WhatsApp.',
+            visIcon: false
+        ),
+        IconButton(
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const QR()),);
+          },
+          icon: SvgPicture.asset(
+            'assets/icons/fi-br-transform.svg',
+          ),
+        ),
+      ],
     );
   }
 
   Widget body(){
     return SizedBox(
-      height: 400,
+      height: 450,
       child: ListView.builder(
         itemCount: elementSettigs.length,
         itemBuilder: (BuildContext context, int index) {

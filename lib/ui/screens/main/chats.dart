@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:whats_app/ui/screens/messag.dart';
 
 class Chats extends StatefulWidget {
   const Chats({super.key});
@@ -44,7 +45,9 @@ class _HomeState extends State<Chats> {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             onTap: (){
-              print(index);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Message()),);
             },
             title: Container(
                 padding: const EdgeInsets.only(bottom: 32),

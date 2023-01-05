@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:whats_app/main.dart';
 
 class Message extends StatefulWidget {
   const Message({Key? key}) : super(key: key);
@@ -13,12 +14,14 @@ class _MessageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode (SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
-    return Column(
-      children: [
-        top(),
-        body(),
-        bottom()
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          top(),
+          body(),
+          bottom()
+        ],
+      ),
     );
   }
 
@@ -29,8 +32,15 @@ class _MessageState extends State<Message> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(width: 28),
-          SvgPicture.asset("assets/icons/fi-br-arrow-left.svg"),
+          const SizedBox(width: 8),
+          IconButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyHomePage()),);
+            },
+            icon: SvgPicture.asset("assets/icons/fi-br-arrow-left.svg"),
+          ),
           const SizedBox(width: 16),
           SvgPicture.asset("assets/icons/QWE.svg",
           width: 40, height: 40,),

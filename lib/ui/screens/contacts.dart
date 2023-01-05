@@ -39,27 +39,29 @@ class _ContactsState extends State<Contacts> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 850,
-      child: ListView.builder(
-        itemCount: elementSettigs.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            onTap: (){
-              print(index);
-            },
-            title: Container(
-                padding: const EdgeInsets.only(bottom: 32),
-                child: element(
-                    elementSettigs[index].path,
-                    elementSettigs[index].title,
-                    elementSettigs[index].subtitle,
-                    visIcon: elementSettigs[index].visIcon,
-                    status: elementSettigs[index].status
-                )
-            ),
-          );
-        },
+    return Scaffold(
+      body: SizedBox(
+        height: 850,
+        child: ListView.builder(
+          itemCount: elementSettigs.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              onTap: (){
+                print(index);
+              },
+              title: Container(
+                  padding: const EdgeInsets.only(bottom: 32),
+                  child: element(
+                      elementSettigs[index].path,
+                      elementSettigs[index].title,
+                      elementSettigs[index].subtitle,
+                      visIcon: elementSettigs[index].visIcon,
+                      status: elementSettigs[index].status
+                  )
+              ),
+            );
+          },
+        ),
       ),
     );
   }

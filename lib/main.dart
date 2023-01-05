@@ -6,6 +6,7 @@ import 'package:whats_app/ui/screens/facetime.dart';
 import 'package:whats_app/ui/screens/main/calls.dart';
 import 'package:whats_app/ui/screens/main/chats.dart';
 import 'package:whats_app/ui/screens/main/status.dart';
+import 'package:whats_app/ui/screens/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -129,13 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     IconButton(
                       onPressed: (){
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Facetime()),);
                       },
                       icon: SvgPicture.asset('assets/icons/fi-br-camera.svg'),
                     ),
                     IconButton(
                       onPressed: (){
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Contacts()),);
                       },
                       icon: SvgPicture.asset('assets/icons/fi-br-user-add.svg'),
                     ),
@@ -147,7 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     IconButton(
                       onPressed: (){
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Settings()),);
                       },
                       icon: SvgPicture.asset(
                         'assets/icons/fi-br-menu-dots-vertical.svg',
