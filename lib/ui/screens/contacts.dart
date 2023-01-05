@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:whats_app/main.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -40,32 +41,65 @@ class _ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: 850,
-        child: ListView.builder(
-          itemCount: elementSettigs.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              onTap: (){
-                print(index);
+      body: Column(
+        children: [
+          top(),
+          SizedBox(
+            height: 770,
+            child: ListView.builder(
+              itemCount: elementSettigs.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  onTap: (){
+                    print(index);
+                  },
+                  title: Container(
+                      padding: const EdgeInsets.only(bottom: 32),
+                      child: element(
+                          elementSettigs[index].path,
+                          elementSettigs[index].title,
+                          elementSettigs[index].subtitle,
+                          visIcon: elementSettigs[index].visIcon,
+                          status: elementSettigs[index].status
+                      )
+                  ),
+                );
               },
-              title: Container(
-                  padding: const EdgeInsets.only(bottom: 32),
-                  child: element(
-                      elementSettigs[index].path,
-                      elementSettigs[index].title,
-                      elementSettigs[index].subtitle,
-                      visIcon: elementSettigs[index].visIcon,
-                      status: elementSettigs[index].status
-                  )
-              ),
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
+  Widget top(){
+    return SizedBox(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(width: 28),
+          IconButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyHomePage()),);
+            },
+            icon: SvgPicture.asset("assets/icons/fi-br-arrow-left.svg", color: const Color(0xff212121),),
+          ),
+          const SizedBox(width: 16),
+          const Text(
+            "Contacts",
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Color(0xff212121),
+                fontSize: 18
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget element(String iconPath, String title, String subtitle, {bool visIcon = false, String status = "0"}){
     return Row(
